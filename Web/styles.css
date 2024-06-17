@@ -1,0 +1,151 @@
+@font-face {
+    font-family: 'MinecraftBold';
+    src: url('fonts/MinecraftTen.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MinecraftRegular';
+    src: url('fonts/MinecraftRegular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body, html {
+    height: 500vh;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+body {
+    overflow-y: auto; /* Enable vertical scrollbar */
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    color: white;
+}
+
+.glowPurple {
+    font-size: 80px;
+    color: #8c00ff;
+    text-align: center;
+    -webkit-animation: glowPurple 1s ease-in-out infinite alternate;
+    -moz-animation: glowPurple 1s ease-in-out infinite alternate;
+    animation: glowPurple 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glowPurple {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #dabaff, 0 0 40px #a94dff, 0 0 50px #8113ff, 0 0 60px #4500e6, 0 0 70px #2f00ff;
+    }
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #630fff, 0 0 40px #8450ff, 0 0 50px #8b4dff, 0 0 60px #a9a3ff, 0 0 70px #cdb7ff, 0 0 80px #e5d4ff;
+    }
+  }
+
+.glowWhite {
+    font-size: 80px;
+    color: #ffffff;
+    text-align: center;
+    -webkit-animation: glowWhite 1s ease-in-out infinite alternate;
+    -moz-animation: glowWhite 1s ease-in-out infinite alternate;
+    animation: glowWhite 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glowWhite {
+    from {
+      text-shadow: 0 0 10px #ffffff42, 0 0 20px #ffffffc0, 0 0 30px #a5a5a571, 0 0 40px #9292923b, 0 0 50px #61616121, 0 0 60px #22222210, 0 0 70px #13131309;
+    }
+    to {
+      text-shadow: 0 0 20px #ffffff41, 0 0 30px #bebebe69, 0 0 40px #8f8f8f49, 0 0 50px #4242422a, 0 0 60px #75757518, 0 0 70px #4747470a, 0 0 80px #1f004d27;
+    }
+  }
+
+.logo-container {
+    display: flex;
+    align-items: center; /* Vertically center items */
+    margin-top: 60px;
+    /* Center the logo */
+    justify-content: center;
+}
+
+h1 {
+    font-family: 'MinecraftBold';
+    font-size: 80px;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'MinecraftRegular';
+    font-size: 50px;
+    text-align: center;
+}
+
+h3 {
+    font-family: 'MinecraftRegular';
+    font-size: 35px;
+    text-align: center;
+}
+
+p {
+    font-family: 'MinecraftRegular';
+    font-size: 20px;
+    text-align: center;
+}
+
+p2 {
+    font-family: 'MinecraftRegular';
+    font-size: 15px;
+    text-align: center;
+}
+
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    background-size: cover;
+}
+
+@font-face {
+    font-family: 'Minecraft';
+    src: url('path-to-your-minecraft-font.ttf') format('truetype');
+}
+
+.minecraft-button {
+    font-family: 'MinecraftRegular';
+    font-size: 30px;
+    color: white;
+    background-color: #34c924;
+    border: 4px solid #1e8017;
+    padding: 20px 20px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px #1e8017;
+    cursor: pointer;
+    box-shadow: 0 0 10px #1e8017;
+    outline: none;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.minecraft-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 0 5px #1e8017;
+}
+
+.minecraft-button:hover {
+    background-color: #28a31c;
+}
+
+.minecraft-button:focus {
+    outline: none;
+}
