@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="terheyden.javextras.notnull.jetbrains" type="repository">
+    <properties maven-id="com.terheyden.javextras:notnull-jetbrains:24.0.1">
+      <exclude>
+        <dependency maven-id="org.apache.logging.log4j:log4j-api" />
+      </exclude>
+    </properties>
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/terheyden/javextras/notnull-jetbrains/24.0.1/notnull-jetbrains-24.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,20 @@
+name: Purplecraft
+version: '1.0-SNAPSHOT'
+main: net.purplecraft.purplecraft.Purplecraft
+api-version: '1.20'
+commands:
+  setspawn:
+    description: Set the spawn location.
+    usage: /setspawn
+  spawn:
+    description: Teleport to the spawn location.
+    usage: /spawn
+  speed:
+    description: Allows speed change
+    usage: /speed <number> <user>
+  tpa:
+    description: Requests a tp request to the specified user
+    usage: /tpa <user>
+  tpaccept:
+    description: Accepts most recent tp request
+    usage: /tpaccept

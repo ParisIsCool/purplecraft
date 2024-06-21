@@ -2,6 +2,11 @@ const video = document.getElementById('background-video');
 let lastScrollY = 0;
 let lastCalledTime = Date.now();
 
+// Fix for mobile video playback
+var mobilevideo = document.getElementsByTagName("video")[0];
+mobilevideo.setAttribute("playsinline", "");
+mobilevideo.setAttribute("muted", "");
+
 // Function to update video time based on scroll
 function updateVideoTime() {
     const scrollPosition = window.scrollY;

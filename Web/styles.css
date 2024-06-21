@@ -14,10 +14,10 @@
 
 
 body, html {
-    height: 500vh;
+    height: 550vh;
     margin: 0;
     padding: 0;
-    color: white;
+    color: rgba(255, 255, 255, 255);
 }
 
 body {
@@ -32,7 +32,7 @@ body {
 }
 
 .glowPurple {
-    font-size: 80px;
+    font-size: 12vw;
     color: #8c00ff;
     text-align: center;
     -webkit-animation: glowPurple 1s ease-in-out infinite alternate;
@@ -50,7 +50,7 @@ body {
   }
 
 .glowWhite {
-    font-size: 80px;
+    font-size: 12vw;
     color: #ffffff;
     text-align: center;
     -webkit-animation: glowWhite 1s ease-in-out infinite alternate;
@@ -69,8 +69,8 @@ body {
 
 .logo-container {
     display: flex;
-    align-items: center; /* Vertically center items */
-    margin-top: 60px;
+    align-items: top; /* Vertically center items */
+    margin-top: 0px;
     /* Center the logo */
     justify-content: center;
 }
@@ -115,6 +115,7 @@ p2 {
     height: auto;
     z-index: -1;
     background-size: cover;
+    background-image: url("img/scroll_slow3.mp4");
 }
 
 @font-face {
