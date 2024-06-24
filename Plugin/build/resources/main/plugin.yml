@@ -2,6 +2,7 @@ name: Purplecraft
 version: '1.0-SNAPSHOT'
 main: net.purplecraft.purplecraft.Purplecraft
 api-version: '1.20'
+depend: [Vault]
 commands:
   setspawn:
     description: Set the spawn location.
@@ -18,3 +19,29 @@ commands:
   tpaccept:
     description: Accepts most recent tp request
     usage: /tpaccept
+  motd:
+    description: Displays current message of the day
+    usage: /motd
+  bal:
+    description: Check your balance.
+    usage: /bal
+  baltop:
+    description: Shows the top 10 balances
+    usage: /baltop
+  balance:
+    description: Check your balance.
+    usage: /balance
+  balancetop:
+    description: Shows the top 10 balances
+    usage: /balancetop
+  eco:
+    description: Economy management commands.
+    usage: /eco give <player> <amount>
+    permission: vault.economy.give
+    permission-message: You don't have permission to use this command.
+  pay:
+    description: Pay other players from your bux
+    usage: /pay <player> <amount>
+  fly:
+    description: Toggle ability to fly
+    usage: /fly <optional player>
