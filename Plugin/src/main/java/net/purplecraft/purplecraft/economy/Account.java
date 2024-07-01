@@ -3,8 +3,8 @@ package net.purplecraft.purplecraft.economy;
 import java.util.UUID;
 
 public class Account {
-    private UUID uuid;
-    private String name;
+    private final UUID uuid;
+    private final String name;
     private double balance;
 
     public Account(UUID uuid, String name, double balance) {

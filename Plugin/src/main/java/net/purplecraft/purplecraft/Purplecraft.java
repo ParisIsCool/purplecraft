@@ -1,10 +1,12 @@
 package net.purplecraft.purplecraft;
+import net.purplecraft.purplecraft.chat.CustomJoinMessage;
+import net.purplecraft.purplecraft.chat.CustomLeaveMessage;
 import net.purplecraft.purplecraft.commands.*;
 import net.purplecraft.purplecraft.commands.admin.*;
 import net.purplecraft.purplecraft.economy.AccountManager;
 import net.purplecraft.purplecraft.economy.CustomEconomy;
 import net.purplecraft.purplecraft.economy.EconomyHandler;
-import org.bukkit.GameMode;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -15,15 +17,11 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
-import java.util.UUID;
 
 public class Purplecraft extends JavaPlugin {
 
     // General shizz
-    private final Map<UUID, GameMode> playerGamemodes = new HashMap<>();
     public static String strmotd;
     public String getMOTD() { return strmotd; }
     private static AccountManager accountManager;
@@ -49,17 +47,23 @@ public class Purplecraft extends JavaPlugin {
         // Register commands and events
         Objects.requireNonNull(this.getCommand("spawn")).setExecutor(new Spawn());
         Objects.requireNonNull(this.getCommand("setspawn")).setExecutor(new SetSpawn());
+        getServer().getPluginManager().registerEvents(new SetSpawn(), this);
         Objects.requireNonNull(this.getCommand("speed")).setExecutor(new Speed());
         Objects.requireNonNull(this.getCommand("tpa")).setExecutor(new Teleport());
         Objects.requireNonNull(this.getCommand("tpaccept")).setExecutor(new Teleport());
         Objects.requireNonNull(this.getCommand("motd")).setExecutor(new MOTD());
         Objects.requireNonNull(this.getCommand("fly")).setExecutor(new Fly());
-        getServer().getPluginManager().registerEvents(new JoinMOTDListener(), this);
+        Objects.requireNonNull(this.getCommand("god")).setExecutor(new God());
+        getServer().getPluginManager().registerEvents(new MOTD.JoinMOTDListener(), this);
+
+        // SelectPos
+        Bukkit.getPluginManager().registerEvents(new SelectPos(), this);
+        Objects.requireNonNull(this.getCommand("selectpos")).setExecutor(new SelectPos());
 
         // Economy stuff
         accountManager = new AccountManager();
         customEconomy = new CustomEconomy(this);
-        economyHandler = new EconomyHandler(this);
+        economyHandler = new EconomyHandler();
 
         try {
             accountManager.loadBalances();
@@ -79,7 +83,10 @@ public class Purplecraft extends JavaPlugin {
         Objects.requireNonNull(getCommand("pay")).setExecutor(new Pay());
         Objects.requireNonNull(getCommand("baltop")).setExecutor(new BalanceTop());
         Objects.requireNonNull(getCommand("balancetop")).setExecutor(new BalanceTop());
-        getLogger().info("Purplecraft enabled.");
+
+        // Chat stuff!
+        getServer().getPluginManager().registerEvents(new CustomJoinMessage(), this);
+        getServer().getPluginManager().registerEvents(new CustomLeaveMessage(), this);
 
         // Read MOTD from file
         File motdFile = new File(getDataFolder(), "motd.txt");
@@ -104,17 +111,8 @@ public class Purplecraft extends JavaPlugin {
             }
         }
 
+        getLogger().info("Purplecraft enabled.");
 
-    }
-
-    public static class JoinMOTDListener implements Listener {
-        @EventHandler
-        public void onPlayerJoin(PlayerJoinEvent event) {
-            Player player = event.getPlayer();
-            if (strmotd != null) {
-                player.sendMessage(strmotd);
-            }
-        }
     }
 
 }

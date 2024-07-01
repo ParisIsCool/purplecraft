@@ -61,21 +61,30 @@ public class AccountManager {
     }
 
     public void loadBalances() throws IOException {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(saveFilePath))) {
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length != 3) {
-                    System.out.println("Warning: Invalid format in accounts file: " + line);
-                    continue;
+        // Check if the file exists
+        if (new File(saveFilePath).exists()) {
+            // File exists, lets read file
+            try (BufferedReader bufferedReader = new BufferedReader(new FileReader(saveFilePath))) {
+                String line;
+                // Process to separate by line, then separate by ","
+                while ((line = bufferedReader.readLine()) != null) {
+                    String[] parts = line.split(",");
+                    if (parts.length != 3) {
+                        System.out.println("Warning: Invalid format in accounts file: " + line);
+                        continue;
+                    }
+
+                    UUID uuid = UUID.fromString(parts[0]);
+                    String name = parts[1];
+                    double balance = Double.parseDouble(parts[2]);
+
+                    accounts.put(uuid, new Account(uuid, name, balance));
                 }
-
-                UUID uuid = UUID.fromString(parts[0]);
-                String name = parts[1];
-                double balance = Double.parseDouble(parts[2]);
-
-                accounts.put(uuid, new Account(uuid, name, balance));
             }
+        } else {
+            // File does not exist, call saveBalances to initialize an empty file (or handle it differently)
+            System.out.println("Accounts file not found, initializing with saveBalances...");
+            saveBalances();
         }
     }
 

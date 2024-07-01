@@ -17,12 +17,6 @@ import static org.bukkit.Bukkit.getServer;
 
 public class EconomyHandler implements Listener {
 
-    private final Purplecraft plugin;
-
-    public EconomyHandler(Purplecraft plugin) {
-        this.plugin = plugin;
-    }
-
     public static boolean setupEconomy() {
         if (getServer().getPluginManager().getPlugin("Vault") == null) {
             getLogger().severe("Vault plugin not found!");
@@ -50,7 +44,9 @@ public class EconomyHandler implements Listener {
             assert online_player != null;
             online_player.sendMessage(HEADER_CHAR + ChatColor.GREEN + "You have received " + ECONOMY_PREFIX + ChatColor.GOLD + amount + paris.ECONOMY_SUFFIX + ChatColor.GREEN + " from " + sender.getName());
         }
-        sender.sendMessage(HEADER_CHAR + ChatColor.GREEN + "Gave " + ECONOMY_PREFIX + ChatColor.GOLD + amount + paris.ECONOMY_SUFFIX + ChatColor.GREEN + " to " + ChatColor.GOLD + player.getName());
+        if (sender != null){
+            sender.sendMessage(HEADER_CHAR + ChatColor.GREEN + "Gave " + ECONOMY_PREFIX + ChatColor.GOLD + amount + paris.ECONOMY_SUFFIX + ChatColor.GREEN + " to " + ChatColor.GOLD + player.getName());
+        }
     }
 
     public Player getPlayerByName(String name) {

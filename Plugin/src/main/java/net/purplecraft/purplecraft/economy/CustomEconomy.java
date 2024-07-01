@@ -62,7 +62,7 @@ public class CustomEconomy extends AbstractEconomy {
         } catch (IllegalArgumentException e) {
             // Input is not a valid UUID, treat it as a player name
             @NotNull
-            OfflinePlayer player = plugin.getAccountManager().findPlayerByUsername(playerNameOrUUID);
+            OfflinePlayer player = Purplecraft.getAccountManager().findPlayerByUsername(playerNameOrUUID);
             return player;
         }
     }
@@ -71,31 +71,31 @@ public class CustomEconomy extends AbstractEconomy {
     @Override
     public boolean hasAccount(String s) {
         OfflinePlayer player = handleFindPlayer(s);
-        return plugin.getAccountManager().hasAccount(player);
+        return Purplecraft.getAccountManager().hasAccount(player);
     }
 
     @Override
     public boolean hasAccount(String s, String s1) {
         OfflinePlayer player = handleFindPlayer(s);
-        return plugin.getAccountManager().hasAccount(player);
+        return Purplecraft.getAccountManager().hasAccount(player);
     }
 
 
     @Override
     public double getBalance(String s) {
         OfflinePlayer player = handleFindPlayer(s);
-        return plugin.getAccountManager().getBalance(player);
+        return Purplecraft.getAccountManager().getBalance(player);
     }
 
     @Override
     public double getBalance(OfflinePlayer player) {
-        return plugin.getAccountManager().getBalance(player);
+        return Purplecraft.getAccountManager().getBalance(player);
     }
 
     @Override
     public double getBalance(String s, String s1) {
         OfflinePlayer player = handleFindPlayer(s);
-        return plugin.getAccountManager().getBalance(player);
+        return Purplecraft.getAccountManager().getBalance(player);
     }
 
     @Override
@@ -129,13 +129,13 @@ public class CustomEconomy extends AbstractEconomy {
     @NotNull
     private EconomyResponse getEconomyResponse(double v, OfflinePlayer player) {
         if (v < 0) {
-            return new EconomyResponse(0, plugin.getAccountManager().getBalance(player), EconomyResponse.ResponseType.FAILURE, "Cannot withdraw negative amount");
+            return new EconomyResponse(0, Purplecraft.getAccountManager().getBalance(player), EconomyResponse.ResponseType.FAILURE, "Cannot withdraw negative amount");
         }
 
-        if (plugin.getAccountManager().withdraw(player, v)) {
-            return new EconomyResponse(v, plugin.getAccountManager().getBalance(player), EconomyResponse.ResponseType.SUCCESS, null);
+        if (Purplecraft.getAccountManager().withdraw(player, v)) {
+            return new EconomyResponse(v, Purplecraft.getAccountManager().getBalance(player), EconomyResponse.ResponseType.SUCCESS, null);
         } else {
-            return new EconomyResponse(0, plugin.getAccountManager().getBalance(player), EconomyResponse.ResponseType.FAILURE, "Insufficient funds");
+            return new EconomyResponse(0, Purplecraft.getAccountManager().getBalance(player), EconomyResponse.ResponseType.FAILURE, "Insufficient funds");
         }
     }
 
@@ -153,11 +153,11 @@ public class CustomEconomy extends AbstractEconomy {
     @NotNull
     private EconomyResponse getEconomyResponse(OfflinePlayer player, double amount) {
         if (amount < 0) {
-            return new EconomyResponse(0, plugin.getAccountManager().getBalance(player), EconomyResponse.ResponseType.FAILURE, "Cannot deposit negative amount");
+            return new EconomyResponse(0, Purplecraft.getAccountManager().getBalance(player), EconomyResponse.ResponseType.FAILURE, "Cannot deposit negative amount");
         }
 
-        plugin.getAccountManager().deposit(player, amount);
-        return new EconomyResponse(amount, plugin.getAccountManager().getBalance(player), EconomyResponse.ResponseType.SUCCESS, null);
+        Purplecraft.getAccountManager().deposit(player, amount);
+        return new EconomyResponse(amount, Purplecraft.getAccountManager().getBalance(player), EconomyResponse.ResponseType.SUCCESS, null);
     }
 
     @Override
@@ -230,12 +230,12 @@ public class CustomEconomy extends AbstractEconomy {
     @Override
     public boolean createPlayerAccount(String s) {
         OfflinePlayer player = handleFindPlayer(s);
-        return plugin.getAccountManager().createAccount(player);
+        return Purplecraft.getAccountManager().createAccount(player);
     }
 
     @Override
     public boolean createPlayerAccount(OfflinePlayer player) {
-        return plugin.getAccountManager().createAccount(player);
+        return Purplecraft.getAccountManager().createAccount(player);
     }
 
     @Override

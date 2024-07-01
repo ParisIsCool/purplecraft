@@ -45,3 +45,9 @@ commands:
   fly:
     description: Toggle ability to fly
     usage: /fly <optional player>
+  god:
+    description: Toggle ability to be god
+    usage: /god <optional player>
+  selectpos:
+    description: Toggle select earth pos mode
+    usage: /selectpos

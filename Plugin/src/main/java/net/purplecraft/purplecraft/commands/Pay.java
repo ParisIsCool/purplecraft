@@ -12,7 +12,7 @@ import static net.purplecraft.purplecraft.economy.paris.HEADER_CHAR;
 
 public class Pay implements CommandExecutor {
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, Command cmd, @NotNull String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, String[] args) {
         if (args.length < 2) {
             sender.sendMessage(HEADER_CHAR + ChatColor.RED + "Usage: /pay <player> <amount>");
             return true;

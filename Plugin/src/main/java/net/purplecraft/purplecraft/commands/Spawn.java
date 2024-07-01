@@ -22,7 +22,7 @@ public class Spawn implements CommandExecutor {
         }
     }
 
-    public Location getSpawnLocation() {
+    public static Location getSpawnLocation() {
         return spawnLocation;
     }
 
